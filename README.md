@@ -102,6 +102,45 @@ Or build and run EXE (drop into any folder with photos):
 
 The tool scans for image files (JPG, PNG, NEF, CR2, etc.), reads EXIF date metadata (falls back to file modification date), and organizes them into `results/YYYY/MM-MonthName/` structure while preserving originals.
 
+## Video Batch Compressor
+
+A standalone tool to compress videos using FFmpeg with adjustable quality settings.
+
+### Video Compressor Setup
+
+#### Option 1: Self-contained EXE (Recommended)
+
+Build with bundled FFmpeg (no separate installation needed):
+
+```powershell
+python build_video_compressor.py
+```
+
+This downloads FFmpeg automatically and creates `dist/video_compressor.exe` with everything bundled.
+
+#### Option 2: Manual FFmpeg installation
+
+Install FFmpeg separately:
+
+- Download FFmpeg from: <https://ffmpeg.org/download.html>
+- Extract and add to your system PATH, or place `ffmpeg.exe` in the same folder as the script/EXE
+
+### Video Compressor Usage
+
+Run as script:
+
+```powershell
+python scripts/video_compressor.py
+```
+
+Or run the self-contained EXE (drop into any folder with videos):
+
+```powershell
+.\dist\video_compressor.exe
+```
+
+The tool scans for video files (MP4, AVI, MOV, MKV, etc.), compresses them using H.264 with configurable quality (high/medium/low), and saves to `converted_videos/` folder while preserving originals. **The EXE includes FFmpeg - no separate installation required!**
+
 ## Optional: Use pipx to install globally (isolated)
 
 ```powershell

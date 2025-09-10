@@ -187,3 +187,5 @@ results/
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+ffmpeg_bundle/
