@@ -73,6 +73,35 @@ pip install pyinstaller
 
 The tool scans the current folder (and subfolders) for .NEF files, creates a `results` folder with mirrored structure, converts to JPG (quality 90), and preserves originals.
 
+## Photo Organizer by Date
+
+A standalone tool to organize photos by their date into year/month folders.
+
+### Photo Organizer Setup
+
+Install dependencies (Pillow already included if you set up NEF converter):
+
+```powershell
+pip install pillow
+```
+
+### Photo Organizer Usage
+
+Run as script:
+
+```powershell
+python scripts/organize_photos.py
+```
+
+Or build and run EXE (drop into any folder with photos):
+
+```powershell
+& .\.venv\Scripts\pyinstaller.exe -F -n organize_photos.exe -c -s -i NONE -p src --name organize_photos scripts\organize_photos.py
+.\dist\organize_photos.exe
+```
+
+The tool scans for image files (JPG, PNG, NEF, CR2, etc.), reads EXIF date metadata (falls back to file modification date), and organizes them into `results/YYYY/MM-MonthName/` structure while preserving originals.
+
 ## Optional: Use pipx to install globally (isolated)
 
 ```powershell
