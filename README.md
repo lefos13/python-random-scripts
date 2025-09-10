@@ -195,6 +195,46 @@ python build_battery_report.py
 
 The tool generates `Battery_Report_YYYYMMDD_HHMMSS.html` with enhanced styling, automatically opens it in your web browser, and includes battery design vs current capacity, charge cycles, usage history, power settings, and battery life estimates. **Windows only - requires laptop/tablet with battery.**
 
+## JavaScript Development Environment Setup
+
+A standalone tool that sets up a complete JavaScript development environment on a clean Windows PC.
+
+### JS Dev Setup Tool Requirements
+
+**IMPORTANT: Requires administrator privileges for software installation.**
+
+### JS Dev Setup Tool Usage
+
+**Must run as administrator:**
+
+```powershell
+python build_js_dev_setup.py
+# Right-click dist/js_dev_setup.exe → "Run as administrator"
+```
+
+### Tools Installed
+
+The setup tool automatically installs and configures:
+
+- **NVM for Windows** - Node Version Manager for easy Node.js version switching
+- **Node.js LTS** - Latest Long Term Support version via NVM
+- **Git for Windows** - Version control with Bash integration
+- **Visual Studio Code** - Code editor with recommended extensions
+- **Google Chrome** - Browser for development and debugging
+- **Windows Terminal** - Modern terminal experience
+
+### VS Code Configuration
+
+Automatically configures VS Code with:
+
+- Recommended settings for JavaScript development
+- Proper formatting and auto-save settings
+- Git integration enabled
+
+**Note:** Extensions are not automatically installed. You can install them manually from VS Code's Extensions marketplace after setup.
+
+**Drop-and-run usage:** Copy `js_dev_setup.exe` to any Windows PC, right-click → "Run as administrator", and get a fully configured JavaScript development environment in minutes!
+
 ## Duplicate File Finder
 
 A standalone tool to find duplicate files by hash and optionally move them to a timestamped folder for review.
