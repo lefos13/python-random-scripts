@@ -141,6 +141,33 @@ Or run the self-contained EXE (drop into any folder with videos):
 
 The tool scans for video files (MP4, AVI, MOV, MKV, etc.), compresses them using H.264 with configurable quality (high/medium/low), and saves to `converted_videos/` folder while preserving originals. **The EXE includes FFmpeg - no separate installation required!**
 
+## Duplicate File Finder
+
+A standalone tool to find duplicate files by hash and optionally move them to a timestamped folder for review.
+
+### Duplicate Finder Setup
+
+No additional dependencies needed (uses built-in Python libraries).
+
+### Duplicate Finder Usage
+
+Run as script:
+
+```powershell
+python scripts/find_duplicates.py
+```
+
+Or build and run EXE (drop into any folder to scan):
+
+```powershell
+python build_find_duplicates.py
+# or manual build:
+& .\.venv\Scripts\pyinstaller.exe --onefile --console --name find_duplicates --distpath dist scripts/find_duplicates.py
+.\dist\find_duplicates.exe
+```
+
+The tool scans the current folder (and subfolders) for duplicate files using SHA-256 hash comparison, excludes common output directories, shows duplicate sets with file paths and sizes, and optionally moves duplicates to `Duplicates_YYYYMMDD_HHMMSS/` folder for manual review. Preserves one copy of each file in the original location.
+
 ## Optional: Use pipx to install globally (isolated)
 
 ```powershell
