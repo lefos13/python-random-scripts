@@ -141,6 +141,60 @@ Or run the self-contained EXE (drop into any folder with videos):
 
 The tool scans for video files (MP4, AVI, MOV, MKV, etc.), compresses them using H.264 with configurable quality (high/medium/low), and saves to `converted_videos/` folder while preserving originals. **The EXE includes FFmpeg - no separate installation required!**
 
+## Duplicate File Finder Tool
+
+A standalone tool to find duplicate files by hash and optionally move them to a timestamped folder for review.
+
+### Duplicate Finder Tool Setup
+
+No additional dependencies required (uses built-in Python libraries).
+
+### Duplicate Finder Tool Usage
+
+Run as script:
+
+```powershell
+python scripts/find_duplicates.py
+```
+
+Or build and run EXE (drop into any folder to scan):
+
+```powershell
+python build_find_duplicates.py
+.\dist\find_duplicates.exe
+```
+
+The tool scans for all files recursively, calculates SHA-256 hashes to identify duplicates, shows detailed report with file sizes and paths, and optionally moves duplicates to `Duplicates_YYYYMMDD_HHMMSS/` folders while preserving one copy of each file.
+
+## Battery Health Report Generator
+
+A standalone tool that generates comprehensive battery health reports using Windows PowerCfg utility.
+
+### Battery Report Tool Setup
+
+No additional dependencies required (uses built-in Windows PowerCfg and Python libraries).
+
+### Battery Report Tool Usage
+
+Run as script:
+
+```powershell
+python scripts/battery_report.py
+```
+
+Or build and run EXE (drop into any folder):
+
+```powershell
+python build_battery_report.py
+.\dist\battery_report.exe
+```
+
+**For full report details, run as administrator:**
+
+- Right-click `battery_report.exe` → "Run as administrator"
+
+The tool generates `Battery_Report_YYYYMMDD_HHMMSS.html` with enhanced styling, automatically opens it in your web browser, and includes battery design vs current capacity, charge cycles, usage history, power settings, and battery life estimates. **Windows only - requires laptop/tablet with battery.**
+
 ## Duplicate File Finder
 
 A standalone tool to find duplicate files by hash and optionally move them to a timestamped folder for review.

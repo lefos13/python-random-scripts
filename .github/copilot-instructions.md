@@ -93,6 +93,15 @@ PROJECT CONTENT RULES:
 - If a feature is assumed but not confirmed, prompt the user for clarification before including it.
 - If you are working on a VS Code extension, use the VS Code API tool with a query to find relevant VS Code API references and samples related to that query.
 
+SCRIPT DEVELOPMENT PHILOSOPHY:
+- All new scripts requested should be designed as "drop-and-run" standalone tools.
+- Each script should work as both a Python script and as a standalone EXE.
+- When run as an EXE, the tool should operate on the current working directory (where the EXE is placed).
+- Scripts should be self-contained, requiring no external dependencies when built as EXE.
+- Follow the established pattern: create script in scripts/, create build script, test functionality, build EXE.
+- All tools should preserve original files and create organized output in timestamped or structured folders.
+- Interactive prompts should keep console open when run as EXE for user review.
+
 TASK COMPLETION RULES:
 - Your task is complete when:
   - Project is successfully scaffolded and compiled without errors
