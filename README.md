@@ -257,6 +257,33 @@ Automatically configures VS Code with:
 
 **Drop-and-run usage:** Copy `js_dev_setup.exe` to any Windows PC, right-click → "Run as administrator", and get a fully configured JavaScript development environment in minutes!
 
+## File Sorter by Extension
+
+A standalone tool to organize files by their extensions into subfolders within a "sorted_files" directory.
+
+### File Sorter Setup
+
+No additional dependencies required (uses built-in Python libraries).
+
+### File Sorter Usage
+
+Run as script:
+
+```powershell
+python scripts/sort_by_extension.py
+```
+
+Or build and run EXE (drop into any folder to organize):
+
+```powershell
+python build_sort_by_extension.py
+.\dist\sort_by_extension.exe
+```
+
+The tool scans the current folder (and subfolders) for all files, organizes them by extension into subfolders (e.g., `sorted_files/pdf/`, `sorted_files/jpg/`, `sorted_files/zip/`), preserves original files in their current locations, handles files without extensions in a `no_extension/` folder, and provides confirmation prompts when run as EXE.
+
+## Example Tool
+
 ## Duplicate File Finder
 
 A standalone tool to find duplicate files by hash and optionally move them to a timestamped folder for review.
@@ -297,17 +324,23 @@ Each tool has a corresponding build script in the project root:
 - `build_find_duplicates.py` - Creates `dist/find_duplicates.exe`
 - `build_battery_report.py` - Creates `dist/battery_report.exe`
 - `build_js_dev_setup.py` - Creates `dist/js_dev_setup.exe`
+- `build_sort_by_extension.py` - Creates `dist/sort_by_extension.exe`
 
 ### Using Build Scripts
 
 Run any build script to create the corresponding EXE:
 
 ```powershell
+# Activate the virtual environment first
+.\.venv\Scripts\Activate.ps1
+
+# Then run the build script
 python build_nef_to_jpg.py
 python build_video_compressor.py
 python build_find_duplicates.py
 python build_battery_report.py
 python build_js_dev_setup.py
+python build_sort_by_extension.py
 ```
 
 The resulting .exe files will be created in the `dist/` folder and can be:
