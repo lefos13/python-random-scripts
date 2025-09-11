@@ -45,7 +45,7 @@ python scripts/example_tool.py YourName
 
 ## NEF-to-JPG Converter
 
-A standalone tool to convert NEF images to JPG.
+A standalone tool to convert NEF images to JPG with robust fallbacks.
 
 ### Setup
 
@@ -57,13 +57,35 @@ pip install rawpy pillow
 
 ### Usage
 
-Run as script:
+Run as script (scans current folder):
 
 ```powershell
 python scripts/nef_to_jpg.py
 ```
 
-Or build and run EXE (drop into any folder with NEFs):
+Options:
+
+- `--mode auto|raw|embedded` (default: `auto`)
+  - `auto`: try RAW decode first, then fall back to embedded JPEG if needed
+  - `raw`: attempt only RAW decode (full, then half-size); fail if RAW not possible
+  - `embedded`: extract embedded JPEG only (fast, works even if RAW decode fails)
+- `--quality <1-100>` JPEG quality for saved images (default: 90)
+- `--verbose` extra logging about which fallback is used
+
+Examples:
+
+```powershell
+# Verbose auto-mode (recommended)
+python scripts/nef_to_jpg.py --verbose
+
+# Force raw-only (will fail if LibRaw cannot decode the NEF)
+python scripts/nef_to_jpg.py --mode raw --verbose
+
+# Force embedded-only (fast, ensures an output when RAW demosaic fails)
+python scripts/nef_to_jpg.py --mode embedded --quality 92
+```
+
+Build and run EXE (drop into any folder with NEFs):
 
 ```powershell
 pip install pyinstaller
@@ -71,7 +93,7 @@ pip install pyinstaller
 .\dist\nef_to_jpg.exe
 ```
 
-The tool scans the current folder (and subfolders) for .NEF files, creates a `results` folder with mirrored structure, converts to JPG (quality 90), and preserves originals.
+The tool scans the current folder (and subfolders) for `.NEF` files, creates a `results/` folder with mirrored structure, converts to JPG (quality 90 by default), and preserves originals. If RAW decoding fails (driver/LibRaw limitations), the tool can extract the embedded JPEG to ensure an output.
 
 ## Photo Organizer by Date
 
