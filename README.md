@@ -284,6 +284,106 @@ python build_find_duplicates.py
 
 The tool scans the current folder (and subfolders) for duplicate files using SHA-256 hash comparison, excludes common output directories, shows duplicate sets with file paths and sizes, and optionally moves duplicates to `Duplicates_YYYYMMDD_HHMMSS/` folder for manual review. Preserves one copy of each file in the original location.
 
+## Building Standalone EXE Files
+
+This project includes build scripts that create standalone .exe files for each tool using PyInstaller. These executables can be distributed and run on any Windows system without requiring Python to be installed.
+
+### Available Build Scripts
+
+Each tool has a corresponding build script in the project root:
+
+- `build_nef_to_jpg.py` - Creates `dist/nef_to_jpg.exe`
+- `build_video_compressor.py` - Creates `dist/video_compressor.exe` (with bundled FFmpeg)
+- `build_find_duplicates.py` - Creates `dist/find_duplicates.exe`
+- `build_battery_report.py` - Creates `dist/battery_report.exe`
+- `build_js_dev_setup.py` - Creates `dist/js_dev_setup.exe`
+
+### Using Build Scripts
+
+Run any build script to create the corresponding EXE:
+
+```powershell
+python build_nef_to_jpg.py
+python build_video_compressor.py
+python build_find_duplicates.py
+python build_battery_report.py
+python build_js_dev_setup.py
+```
+
+The resulting .exe files will be created in the `dist/` folder and can be:
+- Copied to any Windows computer
+- Run without installing Python or dependencies
+- Used as "drop-and-run" tools in any folder
+
+### Requirements for Building
+
+- PyInstaller must be installed: `pip install pyinstaller`
+- Virtual environment should be activated
+- All script dependencies should be installed
+
+### Build Script Features
+
+- **Self-contained**: Each EXE includes all required dependencies
+- **No installation required**: Works on clean Windows systems
+- **Optimized size**: Uses PyInstaller's --onefile flag for single executable
+- **Special handling**: Video compressor automatically downloads and bundles FFmpeg
+- **Cross-folder operation**: EXEs work when placed in any directory
+
+## Project Philosophy
+
+This project follows a "drop-and-run" philosophy, ensuring that all scripts are designed to be standalone tools that can be executed directly without requiring additional setup. Each script is:
+
+- **Self-contained**: Scripts are designed to work independently, requiring no external dependencies when built as EXE files.
+- **EXE-compatible**: Every script can be converted into a standalone EXE file using the provided build scripts.
+- **Current Directory Focused**: When run as an EXE, the tool operates on the current working directory (where the EXE is placed).
+- **Preserves Original Files**: Tools ensure that original files are not modified and create organized output in timestamped or structured folders.
+- **Interactive**: EXE files include interactive prompts and keep the console open for user review.
+
+## Creating EXE Files
+
+To create standalone EXE files from the scripts, use the provided build scripts. These scripts utilize PyInstaller to package the Python scripts into executables. The resulting EXE files can be run on any Windows machine without requiring Python.
+
+### Steps to Build EXE Files
+1. Ensure you have PyInstaller installed in your environment.
+2. Navigate to the project directory.
+3. Run the corresponding build script for the tool you want to package. For example:
+   ```bash
+   python build_nef_to_jpg.py
+   ```
+4. The EXE file will be created in the `dist/` directory.
+
+### Available Build Scripts
+- `build_nef_to_jpg.py` → `dist/nef_to_jpg.exe`
+- `build_video_compressor.py` → `dist/video_compressor.exe`
+- `build_find_duplicates.py` → `dist/find_duplicates.exe`
+- `build_battery_report.py` → `dist/battery_report.exe`
+- `build_js_dev_setup.py` → `dist/js_dev_setup.exe`
+
+### Benefits of EXE Files
+- **Portability**: EXE files can be copied to any Windows computer and run without Python.
+- **Ease of Use**: No installation or setup is required.
+- **Optimized**: Files are self-contained and include all necessary dependencies.
+
+## Development Guidelines
+
+When adding new scripts to the project, follow these guidelines:
+
+1. **Script Development**:
+   - Place new scripts in the `scripts/` directory.
+   - Ensure scripts are self-contained and follow the "drop-and-run" philosophy.
+   - Include robust error handling and user-friendly messages.
+
+2. **Build Script Creation**:
+   - Create a corresponding build script for each new tool.
+   - Test the functionality of the script and its EXE version.
+
+3. **Output Management**:
+   - Ensure tools create organized output in timestamped or structured folders.
+
+4. **Documentation**:
+   - Update the `README.md` with details about the new tool and its build process.
+   - Ensure the `copilot-instructions.md` file reflects any changes to the project structure or guidelines.
+
 ## Optional: Use pipx to install globally (isolated)
 
 ```powershell

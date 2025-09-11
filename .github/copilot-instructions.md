@@ -1,117 +1,134 @@
-<!-- Use this file to provide workspace-specific custom instructions to Copilot. For more details, visit https://code.visualstudio.com/docs/copilot/copilot-customization#_use-a-githubcopilotinstructionsmd-file -->
+# Python Random Scripts - Copilot Instructions
 
-- [ ] Verify that the copilot-instructions.md file in the .github directory is created.
+This file provides workspace-specific custom instructions for GitHub Copilot. For more details, visit [VS Code Copilot Customization](https://code.visualstudio.com/docs/copilot/copilot-customization#_use-a-githubcopilotinstructionsmd-file).
 
-- [ ] Clarify Project Requirements
-<!-- Ask for project type, language, and frameworks if not specified. Skip if already provided. -->
+## Project Overview
 
-- [ ] Scaffold the Project
-<!--
-Ensure that the previous step has been marked as completed.
-Call project setup tool with projectType parameter.
-Run scaffolding command to create project files and folders.
-Use '.' as the working directory.
-If no appropriate projectType is available, search documentation using available tools.
-Otherwise, create the project structure manually using available file creation tools.
--->
+This is a Python project focused on creating standalone "drop-and-run" tools that can operate as both Python scripts and standalone EXE files. Each tool should work when placed in any directory and operate on the current working directory.
 
-- [ ] Customize the Project
-<!--
-Verify that all previous steps have been completed successfully and you have marked the step as completed.
-Develop a plan to modify codebase according to user requirements.
-Apply modifications using appropriate tools and user-provided references.
-Skip this step for "Hello World" projects.
--->
+## Development Workflow Checklist
 
-- [ ] Install Required Extensions
-<!-- ONLY install extensions provided mentioned in the get_project_setup_info. Skip this step otherwise and mark as completed. -->
+### 1. Clarify Project Requirements
+- Ask for project type, language, and frameworks if not specified
+- Skip if already provided
 
-- [ ] Compile the Project
-<!--
-Verify that all previous steps have been completed.
-Install any missing dependencies.
-Run diagnostics and resolve any issues.
-Check for markdown files in project folder for relevant instructions on how to do this.
--->
+### 2. Scaffold the Project
+- Ensure previous step is completed
+- Use project setup tools with appropriate projectType parameter
+- Use '.' as the working directory
+- Create project structure manually if no appropriate projectType available
 
-- [ ] Create and Run Task
-<!--
-Verify that all previous steps have been completed.
-Check https://code.visualstudio.com/docs/debugtest/tasks to determine if the project needs a task. If so, use the create_and_run_task to create and launch a task based on package.json, README.md, and project structure.
-Skip this step otherwise.
- -->
+### 3. Customize the Project
+- Verify all previous steps are completed
+- Develop modification plan according to user requirements
+- Apply modifications using appropriate tools and references
+- Skip for "Hello World" projects
 
-- [ ] Launch the Project
-<!--
-Verify that all previous steps have been completed.
-Prompt user for debug mode, launch only if confirmed.
- -->
+### 4. Install Required Extensions
+- Only install extensions mentioned in get_project_setup_info
+- Skip otherwise and mark as completed
 
-- [ ] Ensure Documentation is Complete
-<!--
-Verify that all previous steps have been completed.
-Verify that README.md and the copilot-instructions.md file in the .github directory exists and contains current project information.
-Clean up the copilot-instructions.md file in the .github directory by removing all HTML comments.
- -->
+### 5. Compile the Project
+- Verify all previous steps are completed
+- Install missing dependencies
+- Run diagnostics and resolve issues
+- Check markdown files for relevant instructions
 
-<!--
-## Execution Guidelines
-PROGRESS TRACKING:
-- If any tools are available to manage the above todo list, use it to track progress through this checklist.
-- After completing each step, mark it complete and add a summary.
-- Read current todo list status before starting each new step.
+### 6. Create and Run Task
+- Verify all previous steps are completed
+- Check if project needs a task based on package.json, README.md, and project structure
+- Use create_and_run_task if needed
+- Skip otherwise
 
-COMMUNICATION RULES:
-- Avoid verbose explanations or printing full command outputs.
-- If a step is skipped, state that briefly (e.g. "No extensions needed").
-- Do not explain project structure unless asked.
-- Keep explanations concise and focused.
+### 7. Launch the Project
+- Verify all previous steps are completed
+- Prompt user for debug mode, launch only if confirmed
 
-DEVELOPMENT RULES:
-- Use '.' as the working directory unless user specifies otherwise.
-- Avoid adding media or external links unless explicitly requested.
-- Use placeholders only with a note that they should be replaced.
-- Use VS Code API tool only for VS Code extension projects.
-- Once the project is created, it is already opened in Visual Studio Code—do not suggest commands to open this project in Visual Studio again.
-- If the project setup information has additional rules, follow them strictly.
+### 8. Ensure Documentation is Complete
+- Verify all previous steps are completed
+- Ensure README.md and copilot-instructions.md exist and contain current project information
+- Clean up copilot-instructions.md by removing HTML comments
 
-FOLDER CREATION RULES:
-- Always use the current directory as the project root.
-- If you are running any terminal commands, use the '.' argument to ensure that the current working directory is used ALWAYS.
-- Do not create a new folder unless the user explicitly requests it besides a .vscode folder for a tasks.json file.
-- If any of the scaffolding commands mention that the folder name is not correct, let the user know to create a new folder with the correct name and then reopen it again in vscode.
+## Development Rules and Guidelines
 
-EXTENSION INSTALLATION RULES:
-- Only install extension specified by the get_project_setup_info tool. DO NOT INSTALL any other extensions.
+### Communication
+- Keep explanations concise and focused
+- Avoid verbose explanations or printing full command outputs
+- State briefly when steps are skipped (e.g., "No extensions needed")
+- Don't explain project structure unless asked
 
-PROJECT CONTENT RULES:
-- If the user has not specified project details, assume they want a "Hello World" project as a starting point.
-- Avoid adding links of any type (URLs, files, folders, etc.) or integrations that are not explicitly required.
-- Avoid generating images, videos, or any other media files unless explicitly requested.
-- If you need to use any media assets as placeholders, let the user know that these are placeholders and should be replaced with the actual assets later.
-- Ensure all generated components serve a clear purpose within the user's requested workflow.
-- If a feature is assumed but not confirmed, prompt the user for clarification before including it.
-- If you are working on a VS Code extension, use the VS Code API tool with a query to find relevant VS Code API references and samples related to that query.
+### Development Practices
+- Use '.' as the working directory unless user specifies otherwise
+- Avoid adding media or external links unless explicitly requested
+- Use placeholders only with a note that they should be replaced
+- Use VS Code API tool only for VS Code extension projects
+- Don't suggest reopening the project in VS Code once it's already open
 
-SCRIPT DEVELOPMENT PHILOSOPHY:
-- All new scripts requested should be designed as "drop-and-run" standalone tools.
-- Each script should work as both a Python script and as a standalone EXE.
-- When run as an EXE, the tool should operate on the current working directory (where the EXE is placed).
-- Scripts should be self-contained, requiring no external dependencies when built as EXE.
-- Follow the established pattern: create script in scripts/, create build script, test functionality, build EXE.
-- All tools should preserve original files and create organized output in timestamped or structured folders.
-- Interactive prompts should keep console open when run as EXE for user review.
+### Folder Creation
+- Always use the current directory as the project root
+- Use '.' argument for terminal commands to ensure current working directory is used
+- Don't create new folders unless explicitly requested (except .vscode for tasks.json)
+- If scaffolding commands mention incorrect folder names, notify user to create correct folder and reopen in VS Code
 
-TASK COMPLETION RULES:
-- Your task is complete when:
-  - Project is successfully scaffolded and compiled without errors
-  - copilot-instructions.md file in the .github directory exists in the project
-  - README.md file exists and is up to date
-  - User is provided with clear instructions to debug/launch the project
+### Extension Installation
+- Only install extensions specified by get_project_setup_info
+- Do not install any other extensions
 
-Before starting a new task in the above plan, update progress in the plan.
--->
+### Project Content
+- Assume "Hello World" project if user hasn't specified details
+- Avoid adding links, URLs, files, folders, or integrations unless explicitly required
+- Don't generate images, videos, or media files unless explicitly requested
+- Use placeholders for media assets with clear replacement instructions
+- Ensure all components serve a clear purpose
+- Prompt for clarification if features are assumed but not confirmed
+- Use VS Code API tool for VS Code extension projects with relevant queries
 
-- Work through each checklist item systematically.
-- Keep communication concise and focused.
-- Follow development best practices.
+### Script Development Philosophy
+- All new scripts should be designed as "drop-and-run" standalone tools
+- Each script should work as both a Python script and as a standalone EXE
+- When run as an EXE, the tool should operate on the current working directory (where the EXE is placed)
+- Scripts should be self-contained, requiring no external dependencies when built as EXE
+- Follow the established pattern: create script in scripts/, create build script, test functionality, build EXE
+- All tools should preserve original files and create organized output in timestamped or structured folders
+- Interactive prompts should keep console open when run as EXE for user review
+
+### Task Completion Criteria
+Your task is complete when:
+- Project is successfully scaffolded and compiled without errors
+- copilot-instructions.md file in the .github directory exists in the project
+- README.md file exists and is up to date
+- User is provided with clear instructions to debug/launch the project
+
+## Guidelines for Contributors
+
+### Template for New Scripts
+- All new scripts should follow the "drop-and-run" philosophy
+- Ensure scripts can operate as both Python scripts and standalone EXE files
+- Include boilerplate code for handling the current working directory and user-friendly error messages
+
+### Testing Guidelines
+- Test both the Python script and the EXE version to ensure they work as expected
+- Verify that outputs are created in a structured folder (e.g., `outputs/<script_name>/<timestamp>/`)
+- Ensure EXE files preserve original files and do not overwrite existing data
+
+### Output Folder Structure
+- All scripts should save outputs in a structured folder:
+  - `outputs/<script_name>/<timestamp>/`
+  - This ensures outputs are organized and easy to locate
+
+### Error Handling
+- Include robust error handling in all scripts
+- Provide clear and user-friendly error messages, especially for common issues like missing dependencies or invalid inputs
+
+### Interactive Prompts
+- EXE files should include interactive prompts to keep the console open for user review
+- For example, prompt the user to press Enter before closing the console after execution
+
+### Documentation Updates
+- Update the `README.md` file whenever a new script or feature is added
+- Ensure the documentation includes usage instructions, dependencies, and examples
+
+### Build Script Guidelines
+- Maintain and update the build scripts to ensure compatibility with the latest project changes
+- Verify that build scripts create self-contained EXE files with all required dependencies
+- Test the EXE files on a clean Windows system to ensure they work without additional setup
