@@ -282,6 +282,43 @@ python build_sort_by_extension.py
 
 The tool scans the current folder (and subfolders) for all files, organizes them by extension into subfolders (e.g., `sorted_files/pdf/`, `sorted_files/jpg/`, `sorted_files/zip/`), preserves original files in their current locations, handles files without extensions in a `no_extension/` folder, and provides confirmation prompts when run as EXE.
 
+## File Sorter by Type
+
+A standalone tool to organize files by generic file type categories (Documents, Images, Media, Executables, Archives, Code, Others) into a "sorted_by_type" directory.
+
+### File Type Sorter Setup
+
+No additional dependencies required (uses built-in Python libraries).
+
+### File Type Sorter Usage
+
+Run as script:
+
+```powershell
+python scripts/sort_by_type.py
+```
+
+Or build and run EXE (drop into any folder to organize):
+
+```powershell
+python build_sort_by_type.py
+.\dist\sort_by_type.exe
+```
+
+### File Type Categories
+
+The tool organizes files into these broad categories:
+
+- **Documents**: PDF, DOC, DOCX, TXT, RTF, PPT, XLS, EPUB, etc. (53+ file types)
+- **Images**: JPG, PNG, GIF, BMP, TIFF, SVG, RAW, HEIC, etc. (49+ file types)
+- **Media**: MP4, AVI, MP3, WAV, FLAC, MKV, MOV, OGG, etc. (47+ file types)
+- **Executables**: EXE, MSI, APP, DEB, BAT, SH, PS1, VBS, etc. (46+ file types)
+- **Archives**: ZIP, RAR, 7Z, TAR, GZ, ISO, APK, JAR, etc. (44+ file types)
+- **Code**: PY, JS, HTML, CSS, CPP, JAVA, SQL, JSON, etc. (108+ file types)
+- **Others**: Files that don't match any of the above categories
+
+The tool scans the current folder (and subfolders) for all files, organizes them by file type into category subfolders (e.g., `sorted_by_type/Documents/`, `sorted_by_type/Images/`), preserves original files in their current locations, shows detailed statistics and insights about your file collection, and provides confirmation prompts when run as EXE.
+
 ## Example Tool
 
 ## Duplicate File Finder
@@ -325,6 +362,7 @@ Each tool has a corresponding build script in the project root:
 - `build_battery_report.py` - Creates `dist/battery_report.exe`
 - `build_js_dev_setup.py` - Creates `dist/js_dev_setup.exe`
 - `build_sort_by_extension.py` - Creates `dist/sort_by_extension.exe`
+- `build_sort_by_type.py` - Creates `dist/sort_by_type.exe`
 
 ### Using Build Scripts
 
@@ -341,9 +379,11 @@ python build_find_duplicates.py
 python build_battery_report.py
 python build_js_dev_setup.py
 python build_sort_by_extension.py
+python build_sort_by_type.py
 ```
 
 The resulting .exe files will be created in the `dist/` folder and can be:
+
 - Copied to any Windows computer
 - Run without installing Python or dependencies
 - Used as "drop-and-run" tools in any folder
@@ -362,6 +402,37 @@ The resulting .exe files will be created in the `dist/` folder and can be:
 - **Special handling**: Video compressor automatically downloads and bundles FFmpeg
 - **Cross-folder operation**: EXEs work when placed in any directory
 
+## Unified Toolbox Launcher (GUI)
+
+A single graphical launcher that provides buttons for each tool (NEF converter, video compressor, duplicate finder, sorters, etc.). Great for non-technical users.
+
+### Build the Launcher
+
+```powershell
+python build_toolbox_launcher.py
+```
+
+This creates `dist/toolbox_launcher.exe`.
+
+### Run (Script Mode)
+
+```powershell
+python scripts/toolbox_launcher.py
+```
+
+### Features
+
+- One-click access to every tool
+- Separate subprocess per tool (isolation)
+- Basic activity log with status updates
+- Works as drop-and-run EXE (operates in its own folder)
+
+### Notes
+
+- Some heavy tools still open their own console for progress output.
+- When frozen, internal import is attempted; if not feasible, it falls back to system Python.
+- Add/remove tools by editing `TOOLS` mapping in `scripts/toolbox_launcher.py`.
+
 ## Project Philosophy
 
 This project follows a "drop-and-run" philosophy, ensuring that all scripts are designed to be standalone tools that can be executed directly without requiring additional setup. Each script is:
@@ -377,6 +448,7 @@ This project follows a "drop-and-run" philosophy, ensuring that all scripts are 
 To create standalone EXE files from the scripts, use the provided build scripts. These scripts utilize PyInstaller to package the Python scripts into executables. The resulting EXE files can be run on any Windows machine without requiring Python.
 
 ### Steps to Build EXE Files
+
 1. Ensure you have PyInstaller installed in your environment.
 2. Navigate to the project directory.
 3. Run the corresponding build script for the tool you want to package. For example:
@@ -386,6 +458,7 @@ To create standalone EXE files from the scripts, use the provided build scripts.
 4. The EXE file will be created in the `dist/` directory.
 
 ### Available Build Scripts
+
 - `build_nef_to_jpg.py` → `dist/nef_to_jpg.exe`
 - `build_video_compressor.py` → `dist/video_compressor.exe`
 - `build_find_duplicates.py` → `dist/find_duplicates.exe`
@@ -393,6 +466,7 @@ To create standalone EXE files from the scripts, use the provided build scripts.
 - `build_js_dev_setup.py` → `dist/js_dev_setup.exe`
 
 ### Benefits of EXE Files
+
 - **Portability**: EXE files can be copied to any Windows computer and run without Python.
 - **Ease of Use**: No installation or setup is required.
 - **Optimized**: Files are self-contained and include all necessary dependencies.
@@ -402,15 +476,18 @@ To create standalone EXE files from the scripts, use the provided build scripts.
 When adding new scripts to the project, follow these guidelines:
 
 1. **Script Development**:
+
    - Place new scripts in the `scripts/` directory.
    - Ensure scripts are self-contained and follow the "drop-and-run" philosophy.
    - Include robust error handling and user-friendly messages.
 
 2. **Build Script Creation**:
+
    - Create a corresponding build script for each new tool.
    - Test the functionality of the script and its EXE version.
 
 3. **Output Management**:
+
    - Ensure tools create organized output in timestamped or structured folders.
 
 4. **Documentation**:
